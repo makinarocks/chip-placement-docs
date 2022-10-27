@@ -3,8 +3,17 @@
 - This documentation describes the chip placement results for Makinarocks.
 - There are three netlists corresponding to difficulty: Easy, Medium and Hard.
     - In general, the number of cells corresponds to difficulty.
-    
-        ![image](./images/netlist.png)
+
+<center>
+
+| Netlist | # of macros | # of std cells | # of nets |
+|:---|---:|---:|---:|
+|**Easy**|18|120k+|120k+|
+|**Medium**|104|630k+|630k+|
+|**Hard**|118|140k+|130k+|
+
+</center>
+
 - To reduce the calculation complexity, we clustersed standards cells to hundreds of clusters.
     
 ## Description
