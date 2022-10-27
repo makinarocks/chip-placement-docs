@@ -1,21 +1,26 @@
 # Chip Placement
----
+## Summary
 - This documentation describes the chip placement results for Makinarocks.
 - There are three netlists corresponding to difficulty: Easy, Medium and Hard.
     - In general, the number of cells corresponds to difficulty.
     
         ![image](./images/netlist.png)
-- The result consists of adjacent matrix, floor planning and Quality of Routing (QoR).
-    - [adj_mat]
-        - Column sequntially indicates `port`, `macro` and `cluster`.
-        - Row is equivalent to Column. 
-    - [clustering]
-        - For efficiency, it clusters standard cells. According to the number of standard cells, the number of clustering can be adjusted.
-    - [QoR]
-        - We use [ICC2](https://www.synopsys.com/implementation-and-signoff/physical-implementation/ic-compiler.html) as EDA tool
-        - In EDA, it proceeds up to `route_opt`.
----
-## Easy Netlist
-- placement_map
-- QoR: Timing metric and Power -> TNS / WNS / POWER
-- port + macro + clustering adj map (excel)
+- To reduce the calculation complexity, we clustersed standards cells to hundreds of clusters.
+    
+## Description
+We provide the below data.
+### `adj_mat.csv`
+* Each column indicates `port`, `macros` and `standard cell clusters`.
+* Row is equivalent to column.
+### `{idx}_placement.png`
+* Visualize floorplan result
+### `{idx}_macro_placement.png`
+* The coordinates(bottom_left) of all macros are described.
+* Each line has the below format.
+```bash
+{macro index} {macro_width} {macro_height} {x_bottom_left} {y_bottom_left} {orientation}
+```
+### `{idx}_qor.png` & `{idx}_power.png`
+* Timing report and the power report which are provided from commercial EDA Tool([ICC2]((https://www.synopsys.com/implementation-and-signoff/physical-implementation/ic-compiler.html)) by Synopsys).
+* We employ the worst `Reg2Reg` negative slack to compare each placement quailty.
+* We employ `Summary` value in the power report as the comparison factor.
